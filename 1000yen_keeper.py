@@ -9,10 +9,10 @@ which=int(input())
 if which==0:
     print("番号を入力")
     print("例:GX563636M 等")
-    number=int(input())
+    number=input()
     with open("1000_yen.txt","a",encoding="utf-8") as write:
         write.write("\n{}".format(number))
     print("入力完了")
-    
+
 else:
     pass
