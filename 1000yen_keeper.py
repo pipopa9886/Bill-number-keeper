@@ -1,3 +1,4 @@
+import time
 print("1000円番号保存所へようこそ")
 print("これを使えば今まで出会った1000円の番号が保存可能です")
 print("いずれ見直したときに同じ番号にめぐりあえてびっくりするかもしれません")
@@ -13,7 +14,7 @@ if which==0:
         print("例:GX563636M 等")
         number=input()
         with open("1000_yen.txt","a",encoding="utf-8") as write:
-            write.write("\n{}".format(number))
+            write.write("{}\n".format(number))
         print("入力完了")
         print("続けて入力しますか？")
         print("0:はい,1:いいえ")
@@ -24,13 +25,31 @@ elif which==1:
     print("ファイルの中身を表示します")
     print("直接 1000_yen.txt を開いても確認できます")
     print("よろしいですか")
-    print("はい:y,いいえ:n")
+    print("はい:0,いいえ:1")
     choose=input()
-    if choose=="y" or "ｙ" or "Y":
+    if choose==0:
         with open("1000_yen.txt","r",encoding="utf-8") as read:
             for i in read:
                 print(i,end="")
         print("\n")
 
+    else:
+        pass
 else:
-    print("未実装だよ")
+    d=0
+    while d==0:
+        print("検索したい番号を入力してください。")
+        b=input()
+        with open("1000_yen.txt","r",encoding="utf-8") as search:
+            line=[s.strip() for s in search.readlines()]
+
+        c=b in line
+        if c==True:
+            print("{} は存在します！".format(b))
+            time.sleep(1)
+        else:
+            print("その番号は存在しません")
+
+        print("続けて検索しますか？")
+        print("はい:0,いいえ:1")
+        d=int(input())
