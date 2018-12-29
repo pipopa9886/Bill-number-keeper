@@ -9,23 +9,23 @@ print("0:追加、1:閲覧,2:検索")
 which=int(input())
 
 if which==0:
-    a=0
-    while a==0:
+    while True:
         print("番号を入力")
         print("例:GX563636M 等")
+        print("入力をやめたいときは何も入力せず ENTER を押してください")
         pattern=r"[A-Z]{2}[0-9]{6}[A-Z]{1}"
         number=input()
-        if re.fullmatch(pattern,number):
-            with open("1000_yen.txt","a",encoding="utf-8") as write:
-                write.write("{}\n".format(number))
-            print("入力完了")
-            print("続けて入力しますか？")
-            print("0:はい,1:いいえ")
-            a=int(input())
+        if number=="":
+            break
 
         else:
-            print("正しい番号かな？\n")
-            a=0
+            if re.fullmatch(pattern,number):
+                with open("1000_yen.txt","a",encoding="utf-8") as write:
+                    write.write("{}\n".format(number))
+                print("入力完了\n")
+
+            else:
+                print("正しい番号かな？\n")
 
 
 elif which==1:
