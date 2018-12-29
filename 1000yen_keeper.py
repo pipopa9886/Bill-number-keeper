@@ -23,15 +23,13 @@ if which==0:
 
 elif which==1:
     print("ファイルの中身を表示します")
-    print("直接 1000_yen.txt を開いても確認できます")
     print("よろしいですか")
     print("はい:0,いいえ:1")
-    choose=input()
+    choose=int(input())
     if choose==0:
         with open("1000_yen.txt","r",encoding="utf-8") as read:
             for i in read:
                 print(i,end="")
-        print("\n")
 
     else:
         pass
