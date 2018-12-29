@@ -1,4 +1,5 @@
 import time
+import re
 print("1000円番号保存所へようこそ")
 print("これを使えば今まで出会った1000円の番号が保存可能です")
 print("いずれ見直したときに同じ番号にめぐりあえてびっくりするかもしれません")
@@ -12,13 +13,19 @@ if which==0:
     while a==0:
         print("番号を入力")
         print("例:GX563636M 等")
+        pattern=r"[A-Z]{2}[0-9]{6}[A-Z]{1}"
         number=input()
-        with open("1000_yen.txt","a",encoding="utf-8") as write:
-            write.write("{}\n".format(number))
-        print("入力完了")
-        print("続けて入力しますか？")
-        print("0:はい,1:いいえ")
-        a=int(input())
+        if re.fullmatch(pattern,number):
+            with open("1000_yen.txt","a",encoding="utf-8") as write:
+                write.write("{}\n".format(number))
+            print("入力完了")
+            print("続けて入力しますか？")
+            print("0:はい,1:いいえ")
+            a=int(input())
+
+        else:
+            print("正しい番号かな？\n")
+            a=0
 
 
 elif which==1:
