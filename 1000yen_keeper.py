@@ -27,9 +27,10 @@ elif which==1:
     print("はい:0,いいえ:1")
     choose=int(input())
     if choose==0:
-        with open("1000_yen.txt","r",encoding="utf-8") as read:
-            for i in read:
-                print(i,end="")
+        with open("1000_yen.txt","r",encoding="utf-8") as view:
+            line=[s.strip() for s in view.readlines()]
+        line.sort()
+        print(line)
 
     else:
         pass
