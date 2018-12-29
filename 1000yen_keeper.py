@@ -19,10 +19,19 @@ if which==0:
             break
 
         else:
+            with open("1000_yen.txt","r",encoding="utf-8") as se:
+                line=[s.strip() for s in se.readlines()]
             if re.fullmatch(pattern,number):
-                with open("1000_yen.txt","a",encoding="utf-8") as write:
-                    write.write("{}\n".format(number))
-                print("入力完了\n")
+
+                c_0=number in line
+                if c_0==True:
+                    print("既に番号は存在します！")
+
+                else:
+                    if re.fullmatch(pattern,number):
+                        with open("1000_yen.txt","a",encoding="utf-8") as write:
+                            write.write("{}\n".format(number))
+                        print("入力完了\n")
 
             else:
                 print("正しい番号かな？\n")
